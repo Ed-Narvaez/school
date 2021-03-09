@@ -1,0 +1,45 @@
+{% extends 'estudiante.html' %}
+{% block titulo %} Notas registradas {% endblock %}
+
+{% block css %}
+  <style>
+	img { width:100px; }
+  </style>
+{% endblock %}
+
+
+{% block encabezado %}
+  <h1>Sus Notas</h1>
+{% endblock %}
+
+{% block contenido %}
+<a href="{% url 'registrar' %}">Registrarse en una evaluacion</a>
+<ul>
+	{% for dato in notas %}
+	<li>
+		<a href='#'>Evaluacion: {{dato.titulo}}</a>
+	</li>
+	<li>
+		<a href='#'>Nota: {{dato.nota}}</a>
+	</li>
+	{% empty %}
+	<li>Aún no tiene notas calificadas</li>
+	{% endfor %}
+</ul>
+
+{% block encabezado %}
+  <h1>Sus Asistencias</h1>
+{% endblock %}
+<ul>
+	{% for item in asistencias %}
+	<li>
+		<a href='#'>Dia: {{item.dia}}</a>
+	</li>
+	<li>
+		<a href='#'>Asistio: {{item.asistio}}</a>
+	</li>
+	{% empty %}
+	<li>Aún no tiene asistencias</li>
+	{% endfor %}
+</ul>
+{% endblock %}

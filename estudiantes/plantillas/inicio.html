@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% comment %} Aqui van comentarios {% endcomment %}
+
+{% block titulo %} Inicio {% endblock %}
+
+{% block encabezado %} 
+	<h1>Estudiantes ;) </h1>
+{% endblock %}
+
+{% block contenido %}
+  <p>
+	  Actualmente tenemos registradas: 
+     {% with total=evaluaciones.count %} 
+		{{total}} estudiante{{total|pluralize}}
+	 {% endwith %}
+  </p>
+	<ul>		
+	  {% for dato in evaluaciones %}
+	  <li class="{% cycle 'impar' 'par' %}">{{dato.titulo|title}}</li>
+	  {% empty %}
+	  <li>No hay evaluaciones registrados aún.</li>
+	  {% endfor %}
+	</ul>
+{% endblock %}
